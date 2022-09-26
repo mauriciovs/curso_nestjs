@@ -27,8 +27,8 @@ model Event {
   description String?
   date        DateTime
   createdAt   DateTime @default(now())
-  user        User @relation(fields: [userId], references: [id])
-  userId      String
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
 
   @@map("event")
 }
