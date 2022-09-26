@@ -4,7 +4,7 @@ import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserEntity } from '../entities/user.entity';
 
-@Injectable
+@Injectable()
 export class UserRepository {
     constructor(private readonly prisma: PrismaService) {}
 
@@ -34,11 +34,11 @@ export class UserRepository {
             where: {
                 id,
             },
-            data: UpdateUserDto,
+            data: updateUserDto,
         });
     }
 
-    async remove(id: string): Promise<UserEntity> {
+    async delete(id: string): Promise<UserEntity> {
         return this.prisma.user.delete({
             where: {
                 id,
